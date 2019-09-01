@@ -2,6 +2,9 @@
 <title>List of users - Python Flask MySQL CRUD</title>
 
 <p><a href="{{ url_for('.userlist') }}"> Add User </a></p>
+<p><a href="{{ url_for('.search_view_name') }}"> View User Name</a></p>
+<p><a href="{{ url_for('.search_view_desi') }}"> View User Designation</a></p>
+<p><a href="{{ url_for('.search_view_phone') }}"> View User Phone</a></p>
 
 <p>
 	{% with messages = get_flashed_messages() %}
@@ -15,7 +18,7 @@
 	{% endwith %}
 </p>
 <p>
-Before
+
 <br/>
 <table border = 1>
 <tr>
@@ -26,14 +29,14 @@ Before
 </tr>
 <br/>
 <tr>
-    <td>W</td>
-    <td>X</td>
-    <td>Y</td>
-    <td>Z</td>
+    <td>Steve Jobs</td>
+    <td>CEO</td>
+    <td>Bangalore</td>
+    <td>99999999</td>
 </tr>
 </table>
 {{ table }}
-Next
+
 <br/>
 {%for item in rows%}
 <tr>
@@ -43,5 +46,5 @@ Next
     <td>{{item[3]}}</td>
 </tr>
 {% endfor %}
-After
+
 </p>
