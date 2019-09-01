@@ -56,5 +56,62 @@ def index():
         return 'successfully deleted record for' + vName
     return render_template('index.html')
 
+#to search an employee based on name
+@app.route('/')
+def search_view_name():
+    if request.method == "POST":
+        details = request.form
+        user_name = details['name']
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM Employee WHERE name=%s", user_name)
+        row = cur.fetchone()
+        print('Total Row(s):', cur.rowcount)
+        cur.close()
+        for row in rows:
+            print(row)
+        if row:
+            return render_template('users.html', row=row)
+        else:
+            return 'Error loading #{user_name}'.format(user_name=user_name)
+    return render_template('index.html')
+
+#to search an employee based on designation
+@app.route('/')
+def search_view_desi():
+    if request.method == "POST":
+        details = request.form
+        user_designation = details['designation']
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM Employee WHERE designation=%s", user_designation)
+        row = cur.fetchone()
+        print('Total Row(s):', cur.rowcount)
+        cur.close()
+        for row in rows:
+            print(row)
+        if row:
+            return render_template('users.html', row=row)
+        else:
+            return 'Error loading #{user_designation}'.format(user_designation=user_designation)
+    return render_template('index.html')
+
+#to search an employee based on phone
+@app.route('/')
+def search_view_phone():
+    if request.method == "POST":
+        details = request.form
+        user_phone = details['phone']
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM Employee WHERE phone=%s", user_phone)
+        row = cur.fetchone()
+        print('Total Row(s):', cur.rowcount)
+        cur.close()
+        for row in rows:
+            print(row)
+        if row:
+            return render_template('users.html', row=row)
+        else:
+            return 'Error loading #{user_phone}'.format(user_phone=user_phone)
+    return render_template('index.html')
+
 if __name__ == '__main__':  
     app.run()
