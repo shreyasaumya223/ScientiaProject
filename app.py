@@ -54,7 +54,7 @@ def index():
         mysql.connection.commit()
         cur.close()
         return 'successfully deleted record for' + vName
-     return render_template('index.html')
+    return render_template('index.html')
 
 if __name__ == '__main__':  
     app.run()
